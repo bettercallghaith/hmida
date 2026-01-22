@@ -1,0 +1,222 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "WhatsApp MCP Tools Schema",
+    "description": "Schema for WhatsApp MCP tools available for AI agents",
+    "type": "object",
+    "definitions": {
+        "add_whatsapp_device": {
+            "type": "object",
+            "description": "Add a new WhatsApp device and get QR code for pairing",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name for the device (e.g., 'Main Phone', 'Business Line')"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "remove_whatsapp_device": {
+            "type": "object",
+            "description": "Remove a WhatsApp device and disconnect its session",
+            "properties": {
+                "device_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the device to remove"
+                }
+            },
+            "required": [
+                "device_id"
+            ]
+        },
+        "list_devices": {
+            "type": "object",
+            "description": "List all WhatsApp devices with their connection status",
+            "properties": {}
+        },
+        "send_whatsapp_text": {
+            "type": "object",
+            "description": "Send a text message via WhatsApp",
+            "properties": {
+                "device_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the device to send from"
+                },
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient phone number with country code"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Text message content"
+                }
+            },
+            "required": [
+                "device_id",
+                "recipient",
+                "content"
+            ]
+        },
+        "send_whatsapp_image": {
+            "type": "object",
+            "description": "Send an image via WhatsApp with optional caption",
+            "properties": {
+                "device_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the device to send from"
+                },
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient phone number with country code"
+                },
+                "media_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the image to send"
+                },
+                "caption": {
+                    "type": "string",
+                    "description": "Optional caption for the image"
+                }
+            },
+            "required": [
+                "device_id",
+                "recipient",
+                "media_url"
+            ]
+        },
+        "send_whatsapp_video": {
+            "type": "object",
+            "description": "Send a video via WhatsApp with optional caption",
+            "properties": {
+                "device_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the device to send from"
+                },
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient phone number with country code"
+                },
+                "media_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the video to send"
+                },
+                "caption": {
+                    "type": "string",
+                    "description": "Optional caption for the video"
+                }
+            },
+            "required": [
+                "device_id",
+                "recipient",
+                "media_url"
+            ]
+        },
+        "send_whatsapp_audio": {
+            "type": "object",
+            "description": "Send an audio message (voice note) via WhatsApp",
+            "properties": {
+                "device_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the device to send from"
+                },
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient phone number with country code"
+                },
+                "media_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the audio file to send"
+                }
+            },
+            "required": [
+                "device_id",
+                "recipient",
+                "media_url"
+            ]
+        },
+        "send_whatsapp_document": {
+            "type": "object",
+            "description": "Send a document via WhatsApp",
+            "properties": {
+                "device_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the device to send from"
+                },
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient phone number with country code"
+                },
+                "media_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the document to send"
+                },
+                "filename": {
+                    "type": "string",
+                    "description": "Filename for the document"
+                },
+                "caption": {
+                    "type": "string",
+                    "description": "Optional caption for the document"
+                }
+            },
+            "required": [
+                "device_id",
+                "recipient",
+                "media_url",
+                "filename"
+            ]
+        },
+        "send_whatsapp_location": {
+            "type": "object",
+            "description": "Send a location pin via WhatsApp",
+            "properties": {
+                "device_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the device to send from"
+                },
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient phone number with country code"
+                },
+                "latitude": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90,
+                    "description": "Latitude coordinate"
+                },
+                "longitude": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180,
+                    "description": "Longitude coordinate"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the location"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "Address of the location"
+                }
+            },
+            "required": [
+                "device_id",
+                "recipient",
+                "latitude",
+                "longitude"
+            ]
+        }
+    }
+}
