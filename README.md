@@ -11,23 +11,6 @@ A production-grade, self-hosted WhatsApp multi-device gateway with MCP server, R
 - 📱 **Full Media Support** - Text, image, video, audio, document, location
 - 🐳 **Docker First** - One-command deployment
 
-## Quick Start
-
-```bash
-# Clone and configure
-cp .env.example .env
-# Edit .env with your settings
-
-# Start all services
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Create your first API key
-docker-compose exec api-gateway python -m app.cli create-api-key --name "My App"
-```
-
 ## Architecture
 
 ```
@@ -49,17 +32,6 @@ docker-compose exec api-gateway python -m app.cli create-api-key --name "My App"
                                         └─────────────────┘
 ```
 
-## Services
-
-| Service | Port | Description |
-|---------|------|-------------|
-| API Gateway | 8000 | REST API endpoints |
-| MCP Server | 8001 | MCP protocol for AI agents |
-| WhatsApp Engine | 3001 | Baileys WebSocket service |
-| PostgreSQL | 5432 | Database |
-| Redis | 6379 | Cache & queues |
-
-## API Documentation
 
 Once running, access OpenAPI docs at: http://localhost:8000/docs
 
@@ -76,7 +48,3 @@ Once running, access OpenAPI docs at: http://localhost:8000/docs
 | `send_whatsapp_audio` | Send audio file |
 | `send_whatsapp_document` | Send document file |
 | `send_whatsapp_location` | Send location pin |
-
-## License
-
-MIT License - See [LICENSE](LICENSE)
