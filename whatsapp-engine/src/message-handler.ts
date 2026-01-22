@@ -77,7 +77,7 @@ export class MessageHandler {
             }
 
             const result = await socket.sendMessage(jid, message);
-            messageId = result?.key?.id;
+            messageId = result?.key?.id ?? undefined;
 
             // Log message to database
             await this.logMessage(payload, messageId, 'sent');
